@@ -11,7 +11,7 @@ const cities = [
         { name: 'Dubai', lat: 25.2048, lng: 55.2708 },
         { name: 'Rabat', lat: 34.0209, lng: -6.8416 }
     ];
-
+    
 
 const  SelectRandomCity = (cities)=> {
         const randomIndex = Math.floor(Math.random() * cities.length);
@@ -39,3 +39,9 @@ const displayCityTemp = async () => {
 }
 
 displayCityTemp(); 
+
+
+history.length
+
+
+
