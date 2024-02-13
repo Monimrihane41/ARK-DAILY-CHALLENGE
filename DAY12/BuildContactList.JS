@@ -1,4 +1,9 @@
 const readline = require('readline');
+const EventEmitter = require('events');
+
+const CustomEvent = new EventEmitter();
+
+
 
 const rl = readline.createInterface({
   input: process.stdin,

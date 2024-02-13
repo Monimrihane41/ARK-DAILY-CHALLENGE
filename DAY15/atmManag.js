@@ -1,8 +1,8 @@
 
 const events = require('events');
 const eventEmitter = new events.EventEmitter();
+
 const fs = require("fs");
-//const { Readline } = require('readline/promises');
 const readline = require("readline").createInterface({
   input: process.stdin,
   output: process.stdout,
