@@ -1,7 +1,11 @@
 const express = require('express');
+const logger = require("./logger")
+const error = require("./error")    
 const app = express();
 const port = 3000;
 app.use(express.json());
+
+app.use([error,logger]);
 
 let products = [
   { id: 1, name: 'iPhone 12 Pro', price: 1099.99 },
