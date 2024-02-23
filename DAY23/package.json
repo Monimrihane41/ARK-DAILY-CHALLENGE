@@ -1,16 +1,21 @@
 {
-  "name": "day19",
+  "name": "cookiessessions",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon BlogAppBackend.js"
+    "dev": "nodemon app.js"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.5",
     "express": "^4.18.2",
-    "nodemon": "^3.0.3"
+    "express-session": "^1.18.0",
+    "nodemon": "^3.1.0"
   }
 }
