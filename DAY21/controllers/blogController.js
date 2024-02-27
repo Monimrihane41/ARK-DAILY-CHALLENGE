@@ -2,17 +2,17 @@ const fs = require('fs');
 const path = require('path');
 
 exports.getBlogs = (req, res) => {
-    const blogs = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/blogs.json')));
-    const userBlogs = blogs.filter(blog => blog.userId === req.user.userId);
+    const blogs = JSON.parse(fs.readFileSync(path.join(__dirname, '../models/blogs.json')));
+    const userBlogs = blogs.filter(blog => blog.userId === req.user.id);
     res.json(userBlogs);
 };
 
 exports.addBlog = (req, res) => {
-    const blogs = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/blogs.json')));
-    const blog = { id: blogs.length + 1, title: req.body.title, content: req.body.content, userId: req.user.userId };
+    const blogs = JSON.parse(fs.readFileSync(path.join(__dirname, '../models/blogs.json')));
+    const blog = { id: blogs.length + 1, title: req.body.title, content: req.body.content, userId: req.user.id};
     blogs.push(blog);
-    fs.writeFileSync(path.join(__dirname, '../data/blogs.json'), JSON.stringify(blogs));
-    res.status(201).send();
+    fs.writeFileSync(path.join(__dirname, '../models/blogs.json'), JSON.stringify(blogs));
+    res.status(201).send('Blog added');
 };
 
 exports.updateBlog = (req, res) => {

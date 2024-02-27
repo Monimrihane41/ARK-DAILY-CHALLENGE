@@ -19,5 +19,6 @@ exports.login = async (req, res) => {
     const validPassword = await bcrypt.compare(req.body.password, user.password);
     if (!validPassword) return res.send('Not Allowed');
     const accessToken = jwt.sign({ userId: user.id }, process.env.ACCESS_TOKEN_SECRET);
+    
     res.json({ accessToken: accessToken });
 };

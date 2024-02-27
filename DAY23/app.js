@@ -1,5 +1,5 @@
 const express = require('express');
-const router = require('../cookiesSessions/routes/userRoute.js');
+const router = require('./routes/userRoute.js');
 
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
@@ -7,7 +7,7 @@ require('dotenv').config();
 const bcrypt = require('bcrypt');
 
 // Server Variable Structure
-
+//session && cookies
 const app = express();
 const port = 3000;
 

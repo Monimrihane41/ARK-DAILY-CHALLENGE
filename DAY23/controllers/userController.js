@@ -23,6 +23,7 @@ const register = (req, res) => {
             username,
             password: hashedPassword,
           });
+          
       
           res.status(200).json({ message: 'Registration successful' });
         }
