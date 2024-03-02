@@ -1,29 +1,51 @@
-const express = require('express');
-const router = require('./routes/userRoute.js');
-
-const session = require('express-session');
-const cookieParser = require('cookie-parser');
-require('dotenv').config();
-const bcrypt = require('bcrypt');
-
-// Server Variable Structure
-//session && cookies
+const express = require("express");
+const session = require("express-session");
+const redis =   require("redis");
+const connectRedis = require("connect-redis");
+const redisStore = connectRedis(session);
 const app = express();
 const port = 3000;
 
-// Middleware
-app.use(express.json());
-app.use(cookieParser());
+//run behind the proxy
+// app.set('trust proxy', 1);
+
+//1 configure over redis client
+const redisClient = redis.createClient({
+    Port: 6379,
+    host: 'localhost'
+});
+
+//2 configure session middleware
 app.use(session({
-  secret: '73817ca3aa275f2ee730221127b9efeaa069c9cc9cc1c71b64d491e51904d9219077e9ec88fa3f005d240a2b9f595a7e4ffedfab5c969709a4d71b8753c841d5', 
-  resave: false,
-  saveUninitialized: true,
+    store: new redisStore({client: redisClient}),
+    secret: "monimrihane",
+    resave: false,//if you make and do not update the session it will not be saved
+    saveUninitialized: true,
+    cookie:{
+        secure : false, //if true only transmit over https
+        httpOnly: false, //if true prevent client side js from reading the cookie
+        maxAge: 1000*60*60*24 //session max age in miliseconds
+    }
 }));
 
-;
 
-app.use('/', router);
+// LOGIN ENDPOINT
+
+app.get("/login", (req, res) => {
+    const {email, password}= req;
+
+    //IF TRUE 
+    
+
+    });
+
+
+
+
+
+
+
 
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+    console.log(`Server is running on port ${port}`);
+    });

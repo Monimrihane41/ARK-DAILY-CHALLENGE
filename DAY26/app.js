@@ -53,7 +53,7 @@ mongoose
 //     .catch((error) => console.log("Error fetching users: ", error));
 
 
-//deleting a user 
+//deleting a user
 // User.findOneAndDelete({ email: "user@arkx.group" })
 //   .then((user) => {
 //     if (user) console.log("User deleted successfully: ", user);
